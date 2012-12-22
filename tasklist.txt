@@ -1,0 +1,38 @@
+﻿to do:
+short term:
+-DONEfinish cards for age 1<-TEDIOUS
+allow you to see neighbors boards on the screen<-MAJOR
+finish cards for age 2<-TEDIOUS
+allow you to click to see neighbors board<-MAJOR
+finish cards for age 3 minus guilds<-TEDIOUS
+rearrange your own board so its more easily seeable<-TEDIOUS
+finish cards for guilds<-TEDIOUS
+put defeat tokens on board and coins count<-EASY
+put your score<-EASY
+make it into a loader (so it loads to 100% and then you click play and it plays)<-MAJOR
+make a tutorial button and a help button (but dont make them enableable) <-EASY
+fix card info screen so its better<-MAJOR
+fix purchase screen so you can cancel out of it etc. <-MAJOR
+enable mouse overs on cards so you can see them<-MAJOR
+fix wonder stage appearance<-EASY
+remove player board<-EASY
+draw arrows to show direction of rotation<-EASY
+label what age it is and what round of the age it is<-EASY
+automation of cards being passed?<-MAJOR
+automation of cards being built?<-MAJOR
+
+long term:
+make the tutorial
+let ai purchase from you
+smarter ai
+sound
+animation of battles
+notification of rounds
+networking
+chatroom
+graphics update
+
+
+longer term:
+leaders
+cities

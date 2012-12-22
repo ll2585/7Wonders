@@ -1,0 +1,5 @@
+﻿http://www.jsp-mag.com/oolime/views/jeux/7Wonders/data/cartes/Voisin/76.jpg
+http://www.jsp-mag.com/oolime/views/jeux/7Wonders/data/cartes/Full/76.jpg
+http://www.jsp-mag.com/oolime/views/jeux/7Wonders/data/cartes/Main/76.jpg
+http://www.jsp-mag.com/oolime/views/jeux/7Wonders/data/merveilles/Main/7A.jpg
+http://www.jsp-mag.com/oolime/views/jeux/7Wonders/data/cartes/RessourcesMain/76.jpg
