@@ -15,8 +15,6 @@
  		public function Board(givenName:String, freeResource:String, stage1:WonderStage = null, stage2:WonderStage = null, stage3:WonderStage = null, stage4:WonderStage = null) 
 		{
 			boardName = givenName;
-			x = 400;
-			y = 350;
 			this.resource = freeResource;
 			makeImage(givenName);
 			wonderStages = new Array();

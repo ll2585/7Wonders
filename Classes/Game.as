@@ -18,6 +18,8 @@
 		private var round:int;
 				
 		private var human:Player;
+		private var gameScreen:GameScreen;
+		
 		
 		public function Game() 
 		{
@@ -76,6 +78,8 @@
 			}
 			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
+			gameScreen = new GameScreen(gameState[0]);
+			addChild(gameScreen);
 		}
 		
 		private function roundEnd(e:GameEvent):void{
