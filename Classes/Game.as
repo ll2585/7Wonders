@@ -1,6 +1,7 @@
 ﻿package
 {
 	import flash.display.MovieClip;
+
 	public class Game extends MovieClip
 	{
 		private var boards:Array;
@@ -10,7 +11,7 @@
 		public static var discardPile:Array;
 		public static const brownResources:Array = new Array("Earth", "Fire", "Wind", "Water");
 		public static const greyResources:Array = new Array("Heart", "Light", "Dark");
-		
+		private var gameState:Array;
 		public static const militaryTokens:Array = new Array(-1, 1, 3, 5);
 		private const startcardcount:int = 7;
 		private var age:int;
@@ -21,11 +22,12 @@
 		public function Game() 
 		{
 			cards = new Array();
-			age = 0;
 			deck = new Deck();
 			players = new Array();
 			discardPile = new Array();
 			boards = new Array();
+			gameState = new Array();
+			age = 0
 			makeboards();
 			boards = DocumentClass.shuffle(boards);
 			makePlayers();
@@ -72,9 +74,12 @@
 			for(var i:int = 0; i < cards.length; i++){
 				players[i%(players.length)].addCard(cards[i]);
 			}
+			gameState.push(new State(age, round, discardPile, getPlayerStates()));
+			trace("the current state is " + gameState[0]);
 		}
 		
 		private function roundEnd(e:GameEvent):void{
+			trace("the current state is " + gameState[0]);
 			round++;
 			playCards();
 			if(round==startcardcount-1){
@@ -166,6 +171,15 @@
 			boards.push(b2);
 			boards.push(b3);
 
+		}
+		
+		
+		private function getPlayerStates():Array{
+			var playerStates:Array = new Array();
+			for(var i:Number = 0; i < players.length; i++){
+				playerStates.unshift([players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
+			}
+			return playerStates;
 		}
 		
 	}

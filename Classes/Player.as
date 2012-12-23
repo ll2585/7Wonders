@@ -17,6 +17,7 @@
 		private var leftNeighborPayment:Array;
 		private var rowcards:Array;
 		private var rightNeighborPayment:Array;
+		private var wonderStagesBuilt:Array;
 		private var rightNeighbor:Player;
 		private var cardY:Number = 415;
 		private var firstCardX:Number = 400;
@@ -61,7 +62,7 @@
 			firstCardX = board.x+285;
 			resourceX = board.x;
 			resourceY = board.y -resourceYMove;
-			
+			wonderStagesBuilt = new Array();
 			cardXMove = 15;
 			cardYMove = 28;
 			yellowX = board.x;
@@ -79,6 +80,19 @@
 			addEventListener(ClickEvent.cardClicked, cardClicked);
 		}
 		
+		public function getWonderStagesBuilt():Array{
+			return wonderStagesBuilt;
+		}
+		
+		public function getCoins():Number{
+			return coins;
+		}
+		
+		
+		public function getMilitaryTokens():Array{
+			return militaryTokens;
+		}
+		
 		public function addCard(c:Card){
 			var midpoint = Math.round((cards.length-1)/2);
 			if (cards.length==0) {
@@ -93,6 +107,10 @@
 			c.addEventListener(ClickEvent.cardClicked, cardClicked);
 			c.makeClickable();
 			addChild(c);
+		}
+		
+		public function getCards():Array{
+			return cards;
 		}
 		
 		private function canBuildCard(c:Card):Boolean{
@@ -386,6 +404,7 @@
 			}
 			//c.removeEventListener(ClickEvent.cardClicked, cardClicked);
 			addChildAt(c, getChildIndex(board));
+			wonderStagesBuilt.push(c);
 			board.updateStage();
 			removeChild(clicked);
 			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
