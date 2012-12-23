@@ -80,6 +80,7 @@
 			trace("the current state is " + gameState[0]);
 			gameScreen = new GameScreen(gameState[0]);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
+			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			addChild(gameScreen);
 		}
 		
@@ -180,8 +181,6 @@
 		
 		
 		private function getPlayerStates():Array{
-			var bob:Array = new Array();
-			trace(bob);
 			var playerStates:Array = new Array();
 			for(var i:Number = 0; i < players.length; i++){
 				trace(players[i].getCards());
@@ -191,8 +190,20 @@
 		}
 		
 		public function elevated(e:ClickEvent){
+			human.addEventListener(ClickEvent.FREEBUILD, passTo);
+			human.addEventListener(ClickEvent.PAYBUILD, passTo);
 			human.cardClicked(e);
 		}
+		
+		public function builtCard(e:ClickEvent){
+			trace("eh?");
+			human.buildCard(e.getClickedCard());
+		}
+		
+		public function passTo(e:ClickEvent){
+			gameScreen.passOn(e);
+		}
+		
 		
 	}
 

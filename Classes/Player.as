@@ -237,10 +237,10 @@
 			if(canBuildCard(clickedCard)){
 				
 				if(freeBuild(clickedCard)){
-					//cardInfo.enableBuild();
+					dispatchEvent( new ClickEvent( ClickEvent.FREEBUILD, e.getClickedCard() ) );
 				}
 				else{
-
+					dispatchEvent( new ClickEvent( ClickEvent.PAYBUILD, e.getClickedCard() ) );
 					//cardInfo.enablePayBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}
 				//cardInfo.addEventListener( GameEvent.BUILD, buildCard );
@@ -263,9 +263,6 @@
 			}
 			
 			
-			//cardInfo.x = 400;
-			//cardInfo.y = 200;
-			//DELETE addChild(cardInfo);
 			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
 			//cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
 			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
@@ -295,9 +292,7 @@
 			}
 		}
 		
-		public function closeCardInfo(e:NavigationEvent):void{
-			//DELETE removeChild(cardInfo);
-		}
+
 		
 		public function freeBuild(c:Card):Boolean{
 			if(canChain(c)) return true;
@@ -320,73 +315,19 @@
 			return true;
 		}
 		
-		public function buildCard(e:GameEvent):void{
-			//coins = coins - cardInfo.getCost();
-			var c:Card = clickedCard;
-			if(c.getColor()=="brown" || c.getColor()=="grey" || (c.getColor() == "yellow" && YellowCard(c).getCardType() == 3 )){
-				c.setSmallPosition(resourceX, resourceY);
-				resourceCards++;
-				if(resourceCards % 3 == 0){
-					resourceX = board.x;
-					resourceY -= resourceYMove;
-				}else{
-					resourceX += resourceXMove;
-				}
-				//DELETE addChildAt(c.getSmallImage(),1);
-			}else if(c.getColor()=="yellow"){
-				c.setSmallPosition(yellowX, yellowY);
-				yellowX += cardXMove;
-				yellowY += cardYMove;
-				//DELETE addChild(c.getSmallImage());
-			}else if(c.getColor()=="red"){
-				c.setSmallPosition(redX, redY);
-				redX += cardXMove;
-				redY += cardYMove;
-				//DELETE addChild(c.getSmallImage());
-			}else if(c.getColor()=="blue"){
-				c.setSmallPosition(blueX, blueY);
-				blueX += cardXMove;
-				blueY += cardYMove;
-				//DELETE addChild(c.getSmallImage());
-			}else if(c.getColor()=="green"){
-				c.setSmallPosition(greenX, greenY);
-				greenX += cardXMove;
-				greenY += cardYMove;
-				//DELETE addChild(c.getSmallImage());
-			}else if(c.getColor()=="purple"){
-				c.setSmallPosition(purpleX, purpleY);
-				purpleX += cardXMove;
-				purpleY += cardYMove;
-				//DELETE addChild(c.getSmallImage());
-			}else{
-				if (rowcards.length==0) {
-					trace("the x is " + firstCardX);
-					c.setPosition(firstCardX,cardY-150);
-				}	else {
-					for(var i:Number=0; i<rowcards.length; i++){
-						trace("the x is now " + (rowcards[i].x+shiftOverDistance));
-						rowcards[i].setPosition(rowcards[i].x+shiftOverDistance, cardY-150);
-					}
-					c.setPosition(rowcards[i-1].x+lengthofCard+distanceBetweenCards,cardY-150);
-					addCard(c);
-				}
-	
-				rowcards.push(c);
-			}
-			//DELETE removeChild(c);
+		public function buildCard(c:Card):void{
+			coins = coins - c.getCoinCost();
 			playedCards.push(c);
-			
 			for(var i:Number=0; i<cards.length; i++){
 				if(cards[i]==c) {
 					cards.splice(i,1);
 				}
 			}
-			c.removeEventListener(ClickEvent.cardClicked, cardClicked);
 			if(c.getColor() == "yellow") {
 				getBenefit(c as YellowCard);
 			}
 			//addChild(c);
-			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
+			//dispatchEvent( new GameEvent( GameEvent.DONE  ) );
 		}
 		
 		public function buildWonder(e:GameEvent):void{

@@ -44,17 +44,33 @@
 				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
 			}
 			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) );
-			cardInfo = new CardInfoScreen(e.getClickedCard());
-			cardInfo.x = 400;
-			cardInfo.y = 200;
-			addChild(cardInfo);
-			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
-			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			
 			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 		}
 		
 		public function closeCardInfo(e:NavigationEvent):void{
 			removeChild(cardInfo);
+		}
+		
+		public function receiveEvent(e:ClickEvent):void{
+			cardInfo = new CardInfoScreen(e.getClickedCard());
+			cardInfo.x = 400;
+			cardInfo.y = 200;
+
+			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
+			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			if(e.getType()=="FREEBUILD"){
+				cardInfo.enableBuild();
+
+			} else if(e.getType() == "PAYBUILD"){
+				
+			}
+			cardInfo.addEventListener( ClickEvent.BUILT, buildCard );
+			addChild(cardInfo);
+		}
+		
+		public function buildCard(e:ClickEvent):void{
+			dispatchEvent( new ClickEvent( ClickEvent.BUILT, e.getClickedCard()  ) );
 		}
 		
 	}

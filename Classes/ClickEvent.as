@@ -7,7 +7,10 @@
 	{
 		
 		public static const cardClicked:String = "card clicked";
-		public static const ELEVATE:String = "event elevated";
+		public static const ELEVATE:String = "ELEVATED";
+		public static const FREEBUILD:String = "FREEBUILD";
+		public static const PAYBUILD:String = "PAYBUILD";
+		public static const BUILT:String = "BUILT";
 		private var myString:String;
 		private var card:Card;
 		
@@ -20,6 +23,10 @@
 		
 		public function getClickedCard():Card{
 			return card;
+		}
+		
+		public function getType():String{
+			return myString;
 		}
 	}
 }
