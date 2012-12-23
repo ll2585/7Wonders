@@ -64,7 +64,7 @@
 			}
 		}
 		public function discard( mouseEvent:MouseEvent ):void{
-			dispatchEvent( new GameEvent( GameEvent.DISCARD ) );
+			dispatchEvent( new ClickEvent( ClickEvent.DISCARD, card ) );
 			dispatchEvent( new NavigationEvent( NavigationEvent.closeCardInfo ) );
 		}
 		public function enableBuild( ):void{

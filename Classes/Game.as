@@ -197,6 +197,7 @@
 		public function elevated(e:ClickEvent){
 			human.addEventListener(ClickEvent.FREEBUILD, passTo);
 			human.addEventListener(ClickEvent.PAYBUILD, passTo);
+			human.addEventListener(ClickEvent.CANNOTBUILD, passTo);
 			human.addEventListener(InformationEvent.wat, passInfo);
 			human.cardClicked(e);
 		}

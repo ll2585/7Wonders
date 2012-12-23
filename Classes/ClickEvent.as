@@ -11,6 +11,8 @@
 		public static const FREEBUILD:String = "FREEBUILD";
 		public static const PAYBUILD:String = "PAYBUILD";
 		public static const BUILT:String = "BUILT";
+		public static const CANNOTBUILD:String = "CANNOTBUILD";
+		public static const DISCARD:String = "DISCARD";
 		private var myString:String;
 		private var card:Card;
 		

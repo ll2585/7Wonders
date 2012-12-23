@@ -207,9 +207,9 @@
 		
 					trace("can build this if i pay");
 					dispatchEvent( new ClickEvent( ClickEvent.PAYBUILD, e.getClickedCard() ) );
-					//cardInfo.enablePayBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}
-				//cardInfo.addEventListener( GameEvent.BUILD, buildCard );
+			} else{
+				dispatchEvent( new ClickEvent( ClickEvent.CANNOTBUILD, e.getClickedCard() ) );
 			}
 			if(board.getNextStage()!=null){
 				var wonderStage:Card = board.getNextStage();
@@ -229,9 +229,6 @@
 			}
 			
 			
-			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
-			//cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
-			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 			/*if (playedCards.length==0) {
 				c.setPosition(firstCardX,cardY-150);
 			}	else {
@@ -252,11 +249,7 @@
 			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
 			*/
 		}
-		public function enableListeners(e:GameEvent):void{
-			for(var i:int = 0; i < cards.length; i++){
-				cards[i].addEventListener(ClickEvent.cardClicked, cardClicked);
-			}
-		}
+
 		
 
 		

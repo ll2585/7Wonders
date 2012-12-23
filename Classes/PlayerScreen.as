@@ -48,8 +48,6 @@
 				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
 			}
 			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) );
-
-			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 		}
 
 		public function closeCardInfo(e:NavigationEvent):void {
@@ -64,18 +62,30 @@
 			cardInfo.x = 400;
 			cardInfo.y = 200;
 
-			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
+			cardInfo.addEventListener( ClickEvent.DISCARD, discardCard );
 			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 			if (e.getType() == "FREEBUILD") {
 				cardInfo.enableBuild();
 
 			} else if (e.getType() == "PAYBUILD") {
 				cardInfo.enablePayBuild(info[0], info[1],info[2], info[3], info[4], info[5]);
+			} else if (e.getType() == "CANNOTBUILD"){
+				
 			}
 			cardInfo.addEventListener( ClickEvent.BUILT, buildCard );
 			addChild(cardInfo);
 		}
 		
+				public function enableListeners(e:GameEvent):void{
+			for(var i:int = 0; i < cards.length; i++){
+				cards[i].addEventListener(ClickEvent.cardClicked, cardClicked);
+			}
+		}
+		
+		public function discardCard(e:ClickEvent):void{
+			trace("discarded");
+		}
 		public function receiveInfoEvent(e:InformationEvent):void {
 			info = e.getInfo();
 		}
