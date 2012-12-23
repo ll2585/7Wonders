@@ -61,24 +61,12 @@
 			return coins;
 		}
 		
-		
 		public function getMilitaryTokens():Array{
 			return militaryTokens;
 		}
 		
 		public function addCard(c:Card){
-			var midpoint = Math.round((cards.length-1)/2);
-			if (cards.length==0) {
-				c.setPosition(firstCardX,cardY);
-			}	else {
-				for(var i:Number=0; i<cards.length; i++){
-					cards[i].setPosition(cards[i].x+shiftOverDistance, cardY);
-				}
-				c.setPosition(cards[i-1].x+lengthofCard+distanceBetweenCards,cardY);
-			}
 			cards.push(c);
-			c.addEventListener(ClickEvent.cardClicked, cardClicked);
-			c.makeClickable();
 			//DELETE addChild(c);
 		}
 		
@@ -204,15 +192,20 @@
 			}
 			else return false;
 		}
+		
 		public function cardClicked(e:ClickEvent):void {
 			clickedCard = e.getClickedCard();
 
 			if(canBuildCard(clickedCard)){
 				
 				if(freeBuild(clickedCard)){
+					trace("free build whoo");
 					dispatchEvent( new ClickEvent( ClickEvent.FREEBUILD, e.getClickedCard() ) );
 				}
 				else{
+					dispatchEvent( new InformationEvent( InformationEvent.wat, new Array(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment) ) );
+		
+					trace("can build this if i pay");
 					dispatchEvent( new ClickEvent( ClickEvent.PAYBUILD, e.getClickedCard() ) );
 					//cardInfo.enablePayBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}

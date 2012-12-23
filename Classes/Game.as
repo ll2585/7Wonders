@@ -197,6 +197,7 @@
 		public function elevated(e:ClickEvent){
 			human.addEventListener(ClickEvent.FREEBUILD, passTo);
 			human.addEventListener(ClickEvent.PAYBUILD, passTo);
+			human.addEventListener(InformationEvent.wat, passInfo);
 			human.cardClicked(e);
 		}
 		
@@ -206,6 +207,10 @@
 		
 		public function passTo(e:ClickEvent){
 			gameScreen.passOn(e);
+		}
+		
+		public function passInfo(e:InformationEvent){
+			gameScreen.passInfo(e);
 		}
 		
 		

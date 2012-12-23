@@ -20,6 +20,7 @@
 			temp.setBoard(s[0]);
 			temp.setHand(s[1]);
 			temp.setBuilt(s[2]);
+			temp.setCoins(s[4]);
 			temp.addEventListener(ClickEvent.ELEVATE, elevated);
 			temp.addEventListener(ClickEvent.BUILT, elevated);
 			return temp;
@@ -35,6 +36,10 @@
 		
 		public function passOn(e:ClickEvent){
 			playerScreen.receiveEvent(e);
+		}
+		
+		public function passInfo(e:InformationEvent){
+			playerScreen.receiveInfoEvent(e);
 		}
 		
 	}

@@ -33,8 +33,8 @@
 			age1Deck.push(new BlueCard("altar", 0,[], 2));
 			age1Deck.push(new BlueCard("baths", 0,[Game.brownResources[1]], 3));
 			age1Deck.push(new BlueCard("theater", 0,[], 2));
-			age1Deck.push(new RedCard("stockade", 0,[Game.brownResources[3]], 1));
-			age1Deck.push(new RedCard("barracks", 0,[Game.brownResources[0]], 1));
+			age1Deck.push(new RedCard("stockade", 0,[Game.brownResources[0]], 1));
+			age1Deck.push(new RedCard("barracks", 0,[Game.brownResources[3]], 1));
 			age1Deck.push(new RedCard("guardtower", 0,[Game.brownResources[2]], 1));
 			age1Deck.push(new GreenCard("apothocary", 0,[Game.greyResources[0]], 1));
 			age1Deck.push(new GreenCard("workshop", 0,[Game.greyResources[1]], 2));
