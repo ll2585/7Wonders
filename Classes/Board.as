@@ -12,7 +12,6 @@
 		private var wonderStages:Array;
 		private var currentStage:int;
 		
-		
  		public function Board(givenName:String, freeResource:String, stage1:WonderStage = null, stage2:WonderStage = null, stage3:WonderStage = null, stage4:WonderStage = null) 
 		{
 			boardName = givenName;
@@ -91,6 +90,7 @@
 			//var bitmap:Bitmap=new Bitmap(image);
 			addChild(bitmap);
 		}
+		
 
 	}
 }

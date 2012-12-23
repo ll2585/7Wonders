@@ -8,28 +8,15 @@
 		private var playerStates:Array;
 		private var round:Number;
 		
- 		public function State(...args) 
+ 		public function State(theage:Number, theround:Number, discard:Array, theplayerStates:Array) 
 		{
-			if(args[0] =="new"){
-				makeNewState(args[1]);
-			}else{
-				age = args[0];
-				round = args[1];
-				discardPile = args[2];
-				playerStates = args[3];
-			}
+				age = theage;
+				round = theround;
+				discardPile = discard;
+				playerStates = theplayerStates;
 			
 		}
 		
-		private function emptyPlayerState():Array{
-			var hand:Array = new Array();
-			var cards:Array = new Array();
-			var wonderStages:Array = new Array();
-			var gold:Number = 6;
-			var militaryTokens:Array = new Array();
-			var temp:Array = [hand, cards, wonderStages, gold, militaryTokens];
-			return temp;
-		}
 		
 		public function getAge():Number{
 			return age;
@@ -43,15 +30,6 @@
 			return playerStates;
 		}
 		
-		public function makeNewState(numPlayers:Number){
-			age = 0;
-			round = 0;
-			discardPile = new Array();
-			playerStates = new Array();
-			for(var i:Number = 0; i < numPlayers; i++){
-				playerStates.push(emptyPlayerState());
-			}
-		}
 		
 		public function toString():String{
 			var result:String = "age: " + age;
@@ -59,7 +37,7 @@
 			result += "\n discard pile: " + discardPile;
 			result += "\n players: " + playerStates.length;
 			for(var i:Number = 0; i < playerStates.length; i++){
-				result += "\n player " + i + ": " + "hand: " + playerStates[i][0] + ", cards built: " + playerStates[i][1] + ", wonder stages used: " + playerStates[i][2] + ", coins: " + playerStates[i][3] + ", military tokens: " + playerStates[i][4];
+				result += "\n player " + i + ": " + "board: " + playerStates[i][0].getName() + "hand: " + playerStates[i][1] + ", cards built: " + playerStates[i][2] + ", wonder stages used: " + playerStates[i][3] + ", coins: " + playerStates[i][4] + ", military tokens: " + playerStates[i][5];
 			}
 			return result;
 		}

@@ -180,7 +180,7 @@
 			var playerStates:Array = new Array();
 			for(var i:Number = 0; i < players.length; i++){
 				trace(players[i].getCards());
-				playerStates.push([players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
+				playerStates.push([players[i].getBoard(), players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
 			}
 			return playerStates;
 		}

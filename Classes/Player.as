@@ -57,7 +57,7 @@
 			rowcards = new Array();
 			scienceArray = new Array(0,0,0,0);
 			playBoard = new PlayBoard(board);
-			addChild(board);
+			//DELETE addChild(board);
 			cardY = board.y + 65;
 			firstCardX = board.x+285;
 			resourceX = board.x;
@@ -76,7 +76,7 @@
 			purpleX = greenX + 137;
 			purpleY = yellowY;
 			resourceCards = 0;
-			addChildAt(playBoard,0);
+			//DELETE addChildAt(playBoard,0);
 			addEventListener(ClickEvent.cardClicked, cardClicked);
 		}
 		
@@ -106,7 +106,7 @@
 			cards.push(c);
 			c.addEventListener(ClickEvent.cardClicked, cardClicked);
 			c.makeClickable();
-			addChild(c);
+			//DELETE addChild(c);
 		}
 		
 		public function getCards():Array{
@@ -268,7 +268,7 @@
 			
 			cardInfo.x = 400;
 			cardInfo.y = 200;
-			addChild(cardInfo);
+			//DELETE addChild(cardInfo);
 			cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
 			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
 			cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
@@ -299,7 +299,7 @@
 		}
 		
 		public function closeCardInfo(e:NavigationEvent):void{
-			removeChild(cardInfo);
+			//DELETE removeChild(cardInfo);
 		}
 		
 		public function freeBuild(c:Card):Boolean{
@@ -335,32 +335,32 @@
 				}else{
 					resourceX += resourceXMove;
 				}
-				addChildAt(c.getSmallImage(),1);
+				//DELETE addChildAt(c.getSmallImage(),1);
 			}else if(c.getColor()=="yellow"){
 				c.setSmallPosition(yellowX, yellowY);
 				yellowX += cardXMove;
 				yellowY += cardYMove;
-				addChild(c.getSmallImage());
+				//DELETE addChild(c.getSmallImage());
 			}else if(c.getColor()=="red"){
 				c.setSmallPosition(redX, redY);
 				redX += cardXMove;
 				redY += cardYMove;
-				addChild(c.getSmallImage());
+				//DELETE addChild(c.getSmallImage());
 			}else if(c.getColor()=="blue"){
 				c.setSmallPosition(blueX, blueY);
 				blueX += cardXMove;
 				blueY += cardYMove;
-				addChild(c.getSmallImage());
+				//DELETE addChild(c.getSmallImage());
 			}else if(c.getColor()=="green"){
 				c.setSmallPosition(greenX, greenY);
 				greenX += cardXMove;
 				greenY += cardYMove;
-				addChild(c.getSmallImage());
+				//DELETE addChild(c.getSmallImage());
 			}else if(c.getColor()=="purple"){
 				c.setSmallPosition(purpleX, purpleY);
 				purpleX += cardXMove;
 				purpleY += cardYMove;
-				addChild(c.getSmallImage());
+				//DELETE addChild(c.getSmallImage());
 			}else{
 				if (rowcards.length==0) {
 					trace("the x is " + firstCardX);
@@ -376,7 +376,7 @@
 	
 				rowcards.push(c);
 			}
-			removeChild(c);
+			//DELETE removeChild(c);
 			playedCards.push(c);
 			
 			for(var i:Number=0; i<cards.length; i++){
@@ -403,10 +403,10 @@
 				}
 			}
 			//c.removeEventListener(ClickEvent.cardClicked, cardClicked);
-			addChildAt(c, getChildIndex(board));
+			//DELETE addChildAt(c, getChildIndex(board));
 			wonderStagesBuilt.push(c);
 			board.updateStage();
-			removeChild(clicked);
+			//DELETE removeChild(clicked);
 			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
 		}
 		
@@ -422,7 +422,7 @@
 					cards.splice(i,1);
 				}
 			}
-			removeChild(clicked);
+			//DELETE removeChild(clicked);
 			discardedLastTurn = true;
 			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
 		}
@@ -465,7 +465,7 @@
 			toSend = cards;
 			for(var i:Number=0; i<cards.length; i++){
 				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
-				removeChild(cards[i]);
+				//DELETE removeChild(cards[i]);
 			}
 		}
 		public function lastCard():Card{
@@ -530,6 +530,9 @@
 		
 		public function getBoardName():String{
 			return board.getName();
+		}
+		public function getBoard():Board{
+			return board;
 		}
 		public function getResources():Array{
 			var temp:Array = new Array();
