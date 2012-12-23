@@ -28,18 +28,7 @@
 		private var shiftOverDistance:Number = -(distanceBetweenCards/2+lengthofCard/2);
 		private var militaryTokens:Array;
 		private var scienceArray:Array;
-		private var yellowX:Number;
-		private var yellowY:Number;
-		private var redX:Number;
-		private var redY:Number;
-		private var blueX:Number;
-		private var blueY:Number;
-		private var greenX:Number;
-		private var greenY:Number;
-		private var purpleX:Number;
-		private var purpleY:Number;
-		private var cardXMove:Number;
-		private var cardYMove:Number;
+		
 		private var resourceCards:Number;
 		
  		public function Player(b:Board) 
@@ -58,19 +47,8 @@
 			cardY = board.y + 65;
 			firstCardX = board.x+285;
 			wonderStagesBuilt = new Array();
-			cardXMove = 15;
-			cardYMove = 28;
-			yellowX = board.x;
-			yellowY = board.y-330;
-			redX = yellowX + 137;
-			redY = yellowY;
-			blueX = redX + 137;
-			blueY = yellowY;
-			greenX = blueX + 137;
-			greenY = yellowY;
-			purpleX = greenX + 137;
-			purpleY = yellowY;
-			resourceCards = 0;
+
+			
 			//DELETE addChildAt(playBoard,0);
 			addEventListener(ClickEvent.cardClicked, cardClicked);
 		}
