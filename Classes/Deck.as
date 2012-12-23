@@ -14,11 +14,11 @@
 			numPlayers = 3;
 			makeCards();
 			deck = new Array(age1Deck, age2Deck, age3Deck);
-			for(var i:int=0; i < deck.length; i++){
+			/*for(var i:int=0; i < deck.length; i++){
 				for(var j:int=0; j < deck[i].length; j++){
 					trace("the cost of " + deck[i][j] + " is " + deck[i][j].getCost());
 				}
-			}
+			}*/
 		}
 		
 		public function makeCards():void{

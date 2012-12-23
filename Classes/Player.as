@@ -487,6 +487,7 @@
 		}
 		//0 is from left, 1 is from right
 		public function getFrom(j:Number):void{
+			trace("my cards was " + cards);
 			var toGet:Array;
 			switch (j) {
 				case 0 :
@@ -500,6 +501,7 @@
 			for(var i:Number=0; i<toGet.length; i++){
 				addCard(toGet[i]);
 			}
+			trace("my cards is now " + getCards());
 		}
 		
 		public function getToSend():Array{
@@ -630,10 +632,11 @@
 		
 		/** POINTS **/
 		public function traceScore():void{
-			trace(getBoardName() + " my military score: " + getMilitaryPoints());
+			/*trace(getBoardName() + " my military score: " + getMilitaryPoints());
 			trace(getBoardName() + " my money score: " + getMoneyPoints());
 			trace(getBoardName() + " my wonder score: " + getWonderPoints());
 			trace(getBoardName() + " my blue score: " + getBluePoints());
+			*/
 		}
 		public function getMilitaryPoints():int{
 			var temp:int = 0;

@@ -49,7 +49,7 @@
 			discardPile = new Array();
 			playerStates = new Array();
 			for(var i:Number = 0; i < numPlayers; i++){
-				playerStates.unshift(emptyPlayerState());
+				playerStates.push(emptyPlayerState());
 			}
 		}
 		

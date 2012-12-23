@@ -74,12 +74,11 @@
 			for(var i:int = 0; i < cards.length; i++){
 				players[i%(players.length)].addCard(cards[i]);
 			}
-			gameState.push(new State(age, round, discardPile, getPlayerStates()));
+			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
 		}
 		
 		private function roundEnd(e:GameEvent):void{
-			trace("the current state is " + gameState[0]);
 			round++;
 			playCards();
 			if(round==startcardcount-1){
@@ -91,6 +90,8 @@
 				players[i].updateBoard();
 				players[i].traceScore();
 			}
+			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
+			trace("the current state is " + gameState[0]);
 		}
 		
 		private function endOfRound():void{
@@ -153,7 +154,6 @@
 			for(var i:int = 0; i<deck.getAgeDeck(age, players.length).length; i++){
 				cards.push(deck.getAgeDeck(age, players.length)[i]);
 			}
-			trace("cards is now " + cards);
 
 		}
 		private function makeboards():void{
@@ -175,9 +175,12 @@
 		
 		
 		private function getPlayerStates():Array{
+			var bob:Array = new Array();
+			trace(bob);
 			var playerStates:Array = new Array();
 			for(var i:Number = 0; i < players.length; i++){
-				playerStates.unshift([players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
+				trace(players[i].getCards());
+				playerStates.push([players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
 			}
 			return playerStates;
 		}
