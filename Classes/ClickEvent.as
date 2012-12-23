@@ -7,6 +7,7 @@
 	{
 		
 		public static const cardClicked:String = "card clicked";
+		public static const ELEVATE:String = "event elevated";
 		private var myString:String;
 		private var card:Card;
 		

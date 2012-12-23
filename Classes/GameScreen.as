@@ -18,12 +18,13 @@
 		public function parsePlayerScreen(s:Array):PlayerScreen{
 			var temp:PlayerScreen = new PlayerScreen();
 			temp.setBoard(s[0]);
-			var temp2:Array = new Array();
-			for(var i:Number = 0; i < 6; i++){
-				temp2.push(new BrownCard("earth", 0, [], [Game.brownResources[0]]));
-			}
-			temp.setHand(temp2);
+			temp.setHand(s[1]);
+			temp.addEventListener(ClickEvent.ELEVATE, elevated);
 			return temp;
+		}
+		
+		public function elevated(e:ClickEvent){
+			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) ); 
 		}
 		
 	}

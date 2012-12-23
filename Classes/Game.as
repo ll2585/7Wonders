@@ -79,6 +79,7 @@
 			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
 			gameScreen = new GameScreen(gameState[0]);
+			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			addChild(gameScreen);
 		}
 		
@@ -187,6 +188,10 @@
 				playerStates.push([players[i].getBoard(), players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
 			}
 			return playerStates;
+		}
+		
+		public function elevated(e:ClickEvent){
+			human.cardClicked(e);
 		}
 		
 	}

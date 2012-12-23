@@ -9,7 +9,7 @@
 		private var cards:Array;
 		private var playedCards:Array;
 		private var clickedCard:Card;
-		private var cardInfo:CardInfoScreen;
+
 		private var toSend:Array;
 		private var coins:Number;
 		private var playBoard:PlayBoard;
@@ -232,46 +232,43 @@
 			else return false;
 		}
 		public function cardClicked(e:ClickEvent):void {
-			for(var i:int = 0; i < cards.length; i++){
-				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
-			}
 			clickedCard = e.getClickedCard();
-			cardInfo = new CardInfoScreen(clickedCard);
+
 			if(canBuildCard(clickedCard)){
 				
 				if(freeBuild(clickedCard)){
-					cardInfo.enableBuild();
+					//cardInfo.enableBuild();
 				}
 				else{
 
-					cardInfo.enablePayBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
+					//cardInfo.enablePayBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}
-				cardInfo.addEventListener( GameEvent.BUILD, buildCard );
+				//cardInfo.addEventListener( GameEvent.BUILD, buildCard );
 			}
 			if(board.getNextStage()!=null){
 				var wonderStage:Card = board.getNextStage();
 				if(canBuildCard(wonderStage)){
 					
-					cardInfo.setWonderStage(board.getNextStage());
+					//cardInfo.setWonderStage(board.getNextStage());
 				if(freeBuild(wonderStage)){
 					trace("I CAN BUILD WONDER STAGE FOR FREE");
-					cardInfo.enableWonderBuild();
+					//cardInfo.enableWonderBuild();
 				}
 				else{
 					trace("I CANNOT BUILD WONDER STAGE FOR FREE");
-					cardInfo.enablePayWonderBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
+					//cardInfo.enablePayWonderBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}
-				cardInfo.addEventListener( GameEvent.BUILDWONDER, buildWonder );
+				//cardInfo.addEventListener( GameEvent.BUILDWONDER, buildWonder );
 			}
 			}
 			
 			
-			cardInfo.x = 400;
-			cardInfo.y = 200;
+			//cardInfo.x = 400;
+			//cardInfo.y = 200;
 			//DELETE addChild(cardInfo);
-			cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
-			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
-			cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
+			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
+			//cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 			/*if (playedCards.length==0) {
 				c.setPosition(firstCardX,cardY-150);
 			}	else {
@@ -324,7 +321,7 @@
 		}
 		
 		public function buildCard(e:GameEvent):void{
-			coins = coins - cardInfo.getCost();
+			//coins = coins - cardInfo.getCost();
 			var c:Card = clickedCard;
 			if(c.getColor()=="brown" || c.getColor()=="grey" || (c.getColor() == "yellow" && YellowCard(c).getCardType() == 3 )){
 				c.setSmallPosition(resourceX, resourceY);
@@ -487,7 +484,6 @@
 		}
 		//0 is from left, 1 is from right
 		public function getFrom(j:Number):void{
-			trace("my cards was " + cards);
 			var toGet:Array;
 			switch (j) {
 				case 0 :
@@ -501,7 +497,6 @@
 			for(var i:Number=0; i<toGet.length; i++){
 				addCard(toGet[i]);
 			}
-			trace("my cards is now " + getCards());
 		}
 		
 		public function getToSend():Array{

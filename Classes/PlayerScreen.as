@@ -5,6 +5,8 @@
 	public class PlayerScreen extends MovieClip
 	{
 		private var board:Board;
+		private var cardInfo:CardInfoScreen;
+		private var cards:Array;
 		public function PlayerScreen() 
 		{
 			
@@ -19,7 +21,6 @@
 		
 		public function setHand(c:Array):void{
 			var firstX:Number = (board.width/2)-(c[0].width/2);
-			trace("first x is " + board.width);
 			var distance:Number = -(10 + 7*c[0].width-board.width)/6;
 			var startX:Number;
 			if(c.length % 2 == 0){
@@ -28,12 +29,32 @@
 				startX = board.x + board.width/2-Math.floor(c.length/2)*(c[0].width+distance)-(c[0].width/2);
 			}
 			//var startX:Number = board.x + board.width/2-Math.floor(c.length/2)*(c[0].width-distance)-c.length%2*(distance/2)-(c.length+1)%2*(c[0].width/2);
-			trace("the first x is " + startX);
 			for(var i:Number = 0; i < c.length; i++){
 				c[i].x = startX + i*distance + i*( c[i].width);
 				c[i].y = 410;
 				addChild(c[i]);
+				c[i].addEventListener(ClickEvent.cardClicked, cardClicked);
+				c[i].makeClickable();
 			}
+			cards = c;
+		}
+		
+		public function cardClicked(e:ClickEvent):void {
+			for(var i:int = 0; i < cards.length; i++){
+				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
+			}
+			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) );
+			cardInfo = new CardInfoScreen(e.getClickedCard());
+			cardInfo.x = 400;
+			cardInfo.y = 200;
+			addChild(cardInfo);
+			//cardInfo.addEventListener( GameEvent.DISCARD, discardCard );
+			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			//cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
+		}
+		
+		public function closeCardInfo(e:NavigationEvent):void{
+			removeChild(cardInfo);
 		}
 		
 	}
