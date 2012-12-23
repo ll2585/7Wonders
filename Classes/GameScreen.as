@@ -19,6 +19,7 @@
 			var temp:PlayerScreen = new PlayerScreen();
 			temp.setBoard(s[0]);
 			temp.setHand(s[1]);
+			temp.setBuilt(s[2]);
 			temp.addEventListener(ClickEvent.ELEVATE, elevated);
 			temp.addEventListener(ClickEvent.BUILT, elevated);
 			return temp;

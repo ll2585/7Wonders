@@ -98,6 +98,11 @@
 			}
 			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
+			removeChild(gameScreen);
+			gameScreen = new GameScreen(gameState[0]);
+			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
+			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			addChild(gameScreen);
 		}
 		
 		private function endOfRound():void{
@@ -196,7 +201,6 @@
 		}
 		
 		public function builtCard(e:ClickEvent){
-			trace("eh?");
 			human.buildCard(e.getClickedCard());
 		}
 		

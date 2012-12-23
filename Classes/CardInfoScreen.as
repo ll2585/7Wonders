@@ -53,7 +53,7 @@
 		public function build( c:Card ):Function{
 			return function(e:MouseEvent){
 				if(c.getColor() != "none"){
-			dispatchEvent( new GameEvent( GameEvent.BUILD ) );
+			dispatchEvent( new ClickEvent( ClickEvent.BUILT, card ) );
 			dispatchEvent( new NavigationEvent( NavigationEvent.closeCardInfo ) );
 				}
 				else{

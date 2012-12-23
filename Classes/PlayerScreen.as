@@ -73,6 +73,19 @@
 			dispatchEvent( new ClickEvent( ClickEvent.BUILT, e.getClickedCard()  ) );
 		}
 		
+		public function setBuilt(c:Array):void{
+			var resourceYMove:Number = 23;
+			var resourceXMove:Number = Card.SMALLIMAGESIZE;
+			var resourceX = board.x;
+			var resourceY = board.y - resourceYMove;
+			for(var i:Number = 0; i < c.length; i++){
+				if(c[i].getColor() == "brown"){
+				addChild(c[i]);
+				}
+			}
+			
+		}
+		
 	}
 
 }

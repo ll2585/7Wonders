@@ -21,16 +21,13 @@
 		private var rightNeighbor:Player;
 		private var cardY:Number = 415;
 		private var firstCardX:Number = 400;
-		private var resourceYMove:Number = 23;
-		private var resourceXMove:Number = Card.SMALLIMAGESIZE;
+
 		private var distanceBetweenCards:Number = -15;
 		private var lengthofCard:Number = 102;
 		private var discardedLastTurn:Boolean = false;
 		private var shiftOverDistance:Number = -(distanceBetweenCards/2+lengthofCard/2);
 		private var militaryTokens:Array;
 		private var scienceArray:Array;
-		private var resourceX:Number;
-		private var resourceY:Number;
 		private var yellowX:Number;
 		private var yellowY:Number;
 		private var redX:Number;
@@ -60,8 +57,6 @@
 			//DELETE addChild(board);
 			cardY = board.y + 65;
 			firstCardX = board.x+285;
-			resourceX = board.x;
-			resourceY = board.y -resourceYMove;
 			wonderStagesBuilt = new Array();
 			cardXMove = 15;
 			cardYMove = 28;
@@ -327,7 +322,7 @@
 				getBenefit(c as YellowCard);
 			}
 			//addChild(c);
-			//dispatchEvent( new GameEvent( GameEvent.DONE  ) );
+			dispatchEvent( new GameEvent( GameEvent.DONE  ) );
 		}
 		
 		public function buildWonder(e:GameEvent):void{
