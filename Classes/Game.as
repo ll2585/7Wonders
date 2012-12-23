@@ -10,6 +10,7 @@
 		public static var discardPile:Array;
 		public static const brownResources:Array = new Array("Earth", "Fire", "Wind", "Water");
 		public static const greyResources:Array = new Array("Heart", "Light", "Dark");
+		
 		public static const militaryTokens:Array = new Array(-1, 1, 3, 5);
 		private const startcardcount:int = 7;
 		private var age:int;
