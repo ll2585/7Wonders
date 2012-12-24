@@ -10,6 +10,9 @@
 		private var rightScreen:NeighborScreen;
 		public function GameScreen(s:State) 
 		{
+			trace("water?");
+			trace("wat?" + s);
+			
 			playerScreen = parsePlayerScreen(s.getPlayerStates()[1]);
 			playerScreen.x = 170;
 			addChild(playerScreen);
@@ -17,6 +20,7 @@
 		
 		public function parsePlayerScreen(s:Array):PlayerScreen{
 			var temp:PlayerScreen = new PlayerScreen();
+			
 			temp.setBoard(s[0]);
 			temp.setHand(s[1]);
 			temp.setBuilt(s[2]);
