@@ -8,8 +8,11 @@
 		private var playedCards:Array;
 		private var coins:Number;
 		private var info:Array;
+		private var coinScreen:CoinImage;
+		
 		public function PlayerScreen() {
 			info = new Array();
+			coinScreen = new CoinImage();
 		}
 
 
@@ -41,6 +44,10 @@
 		
 		public function setCoins(c:Number):void {
 			coins = c;
+			coinScreen.updateCoins(c);
+			addChild(coinScreen);
+			coinScreen.x = board.x + 150;
+			coinScreen.y = board.y;
 		}
 
 		public function cardClicked(e:ClickEvent):void {
