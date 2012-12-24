@@ -14,9 +14,9 @@
 		0: points
 		
 		*/
- 		public function WonderStage(givenName:String, coinCost:Number, cost:Array,  cardType:Array, benefit:Array)
+ 		public function WonderStage(id:Number, givenName:String, coinCost:Number, cost:Array,  cardType:Array, benefit:Array)
 		{
-			super("wondercard", coinCost, cost);
+			super(id, "wondercard", coinCost, cost);
 			setColor("none");
 			setName(givenName);
 			this.benefit = benefit;

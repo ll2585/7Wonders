@@ -11,9 +11,12 @@
 		private var resource:String;
 		private var wonderStages:Array;
 		private var currentStage:int;
+		private var id:Number;
 		
- 		public function Board(givenName:String, freeResource:String, stage1:WonderStage = null, stage2:WonderStage = null, stage3:WonderStage = null, stage4:WonderStage = null) 
+		
+ 		public function Board(id:Number, givenName:String, freeResource:String, stage1:WonderStage = null, stage2:WonderStage = null, stage3:WonderStage = null, stage4:WonderStage = null) 
 		{
+			this.id = id;
 			boardName = givenName;
 			this.resource = freeResource;
 			makeImage(givenName);
@@ -28,6 +31,10 @@
 		
 		public function getName():String{
 			return boardName;
+		}
+		
+		public function getID():Number{
+			return id;
 		}
 		
 		public function getResource():String{

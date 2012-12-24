@@ -18,9 +18,9 @@
 		3: science
 		
 		*/
- 		public function PurpleCard(givenName:String, coinCost:Number, cost:Array,  cardType:int, benefit:String=null) 
+ 		public function PurpleCard(id:Number, givenName:String, coinCost:Number, cost:Array,  cardType:int, benefit:String=null) 
 		{
-			super(givenName, coinCost, cost);
+			super(id, givenName, coinCost, cost);
 			setColor("purple");
 			cardName = givenName;
 			makeClickable();

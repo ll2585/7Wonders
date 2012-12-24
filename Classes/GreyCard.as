@@ -11,9 +11,9 @@
 		private var resource:Array;
 
 		
- 		public function GreyCard(givenName:String, coinCost:Number, cost:Array,  resources:Array) 
+ 		public function GreyCard(id:Number, givenName:String, coinCost:Number, cost:Array,  resources:Array) 
 		{
-			super(givenName, coinCost, cost);
+			super(id, givenName, coinCost, cost);
 			setColor("grey");
 			cardName = givenName;
 			//makeImage(givenName);

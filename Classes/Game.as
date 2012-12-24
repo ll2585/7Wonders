@@ -20,6 +20,7 @@
 		private var human:Player;
 		private var gameScreen:GameScreen;
 		
+		public static var boardArray:Array = new Array();
 		
 		public function Game() 
 		{
@@ -169,21 +170,32 @@
 		}
 		private function makeboards():void{
 			//name, moneycost, costarray, benefit
-			var b1:Board= new Board("gizaboard", brownResources[1], new WonderStage("Giza Stage 1", 0, [brownResources[1],brownResources[1]],[0],[3]),
-									new WonderStage("Giza Stage 2", 0, [brownResources[0],brownResources[0],brownResources[0]],[0],[5]),
-									new WonderStage("Giza Stage 3", 0, [brownResources[1],brownResources[1],brownResources[1],brownResources[1]],[0],[7]));
-			var b2:Board= new Board("zeusboard", brownResources[0], new WonderStage("Zeus Stage 1", 0, [brownResources[0],brownResources[0]],[0],[3]),
-									new WonderStage("Zeus Stage 2", 0, [brownResources[1],brownResources[1]], [], []),//free build,
-									new WonderStage("Zeus Stage 3", 0, [brownResources[3],brownResources[3]],[0],[7]));
-			var b3:Board= new Board("rhodesboard", brownResources[3], new WonderStage("Rhodes Stage 1", 0, [brownResources[0],brownResources[0]],[0],[3]),
-									new WonderStage("Rhodes Stage 2", 0, [brownResources[2],brownResources[2],brownResources[2]],[1],[2]),//free build,
-									new WonderStage("Rhodes Stage 3", 0, [brownResources[3],brownResources[3],brownResources[3],brownResources[3]],[0],[7]));
+			var b1:Board= new Board(0, "gizaboard", brownResources[1], new WonderStage(100, "Giza Stage 1", 0, [brownResources[1],brownResources[1]],[0],[3]),
+									new WonderStage(101, "Giza Stage 2", 0, [brownResources[0],brownResources[0],brownResources[0]],[0],[5]),
+									new WonderStage(102, "Giza Stage 3", 0, [brownResources[1],brownResources[1],brownResources[1],brownResources[1]],[0],[7]));
+			var b2:Board= new Board(1, "zeusboard", brownResources[0], new WonderStage(103, "Zeus Stage 1", 0, [brownResources[0],brownResources[0]],[0],[3]),
+									new WonderStage(104, "Zeus Stage 2", 0, [brownResources[1],brownResources[1]], [], []),//free build,
+									new WonderStage(105, "Zeus Stage 3", 0, [brownResources[3],brownResources[3]],[0],[7]));
+			var b3:Board= new Board(2, "rhodesboard", brownResources[3], new WonderStage(106, "Rhodes Stage 1", 0, [brownResources[0],brownResources[0]],[0],[3]),
+									new WonderStage(107, "Rhodes Stage 2", 0, [brownResources[2],brownResources[2],brownResources[2]],[1],[2]),//free build,
+									new WonderStage(108, "Rhodes Stage 3", 0, [brownResources[3],brownResources[3],brownResources[3],brownResources[3]],[0],[7]));
 			boards.push(b1);
 			boards.push(b2);
 			boards.push(b3);
+			boardArray.push(b1);
+			boardArray.push(b2);
+			boardArray.push(b3);
 
 		}
 		
+		
+		public static function parseBoard(id:Number):Board{
+			for(var i:Number = 0; i < boardArray.length; i++){
+				var b:Board = boardArray[i];
+				if(b.getID() == id) return b;
+			}
+			return null;
+		}
 		
 		private function getPlayerStates():Array{
 			var playerStates:Array = new Array();

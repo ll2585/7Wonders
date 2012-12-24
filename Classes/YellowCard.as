@@ -20,9 +20,9 @@
 			benefit = amt of money
 		
 		*/
- 		public function YellowCard(givenName:String, coinCost:Number, cost:Array,  cardType:int, benefit:String , preReq:Array = null) 
+ 		public function YellowCard(id:Number, givenName:String, coinCost:Number, cost:Array,  cardType:int, benefit:String , preReq:Array = null) 
 		{
-			super(givenName, coinCost, cost, preReq);
+			super(id, givenName, coinCost, cost, preReq);
 			setColor("yellow");
 			cardName = givenName;
 			makeClickable();

@@ -11,9 +11,9 @@
 		private var points:int;
 
 		
- 		public function BlueCard(givenName:String, coinCost:Number, cost:Array,  points:int, preReq:Array = null) 
+ 		public function BlueCard(id:Number, givenName:String, coinCost:Number, cost:Array,  points:int, preReq:Array = null) 
 		{
-			super(givenName, coinCost, cost, preReq);
+			super(id, givenName, coinCost, cost, preReq);
 			setColor("blue");
 			cardName = givenName;
 			makeClickable();

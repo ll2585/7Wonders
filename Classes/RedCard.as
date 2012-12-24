@@ -11,9 +11,9 @@
 		private var swords:int;
 
 		
- 		public function RedCard(givenName:String, coinCost:Number, cost:Array,  swords:int, preReq:Array = null) 
+ 		public function RedCard(id:Number, givenName:String, coinCost:Number, cost:Array,  swords:int, preReq:Array = null) 
 		{
-			super(givenName, coinCost, cost, preReq);
+			super(id, givenName, coinCost, cost, preReq);
 			setColor("red");
 			cardName = givenName;
 			makeClickable();

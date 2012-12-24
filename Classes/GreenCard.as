@@ -11,9 +11,9 @@
 		private var symbolType:int;
 
 		
- 		public function GreenCard(givenName:String, coinCost:Number, cost:Array,  symbolType:int , preReq:Array = null) 
+ 		public function GreenCard(id:Number, givenName:String, coinCost:Number, cost:Array,  symbolType:int , preReq:Array = null) 
 		{
-			super(givenName, coinCost, cost, preReq);
+			super(id, givenName, coinCost, cost, preReq);
 			setColor("green");
 			cardName = givenName;
 			makeClickable();

@@ -16,11 +16,12 @@
 		private var coinCost:Number;
 		private var preRequisiteCards:Array;
 		private var smallImage:Bitmap;
-		
+		private var id:Number;
 
 		
- 		public function Card(givenName:String, moneyCost:Number, costArray:Array, preRequisiteCards:Array = null, benefit:Array = null) 
+ 		public function Card(givenID:Number, givenName:String, moneyCost:Number, costArray:Array, preRequisiteCards:Array = null, benefit:Array = null) 
 		{
+			id = givenID;
 			cardName = givenName;
 			makeNewImage(givenName);
 			cost = costArray;
@@ -31,6 +32,10 @@
 		
 		function makeClickable():void{
 			addEventListener(MouseEvent.CLICK, clickHandler);
+		}
+		
+		public function getID():Number{
+			return id;
 		}
 		
 		function getColor():String{
