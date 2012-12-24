@@ -80,11 +80,13 @@
 			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
-			gameState.unshift(State.parseState("10;;1.14,18,7,11,4,6,0...6.[0.3,16,1,5,12,2,9...6.[2.13,8,17,10,19,15,20...6."));
-			gameScreen = new GameScreen(gameState[0]);
+			setState("10;;1.14,18,7,11,4,6,0...6.[0.3,16,1,5,12,2,9...6.[2.13,8,17,10,19,15,20...6.");
+			/*gameScreen = new GameScreen(gameState[0]);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
 			addChild(gameScreen);
+			*/
 		}
 		
 		private function roundEnd(e:GameEvent):void{
@@ -106,6 +108,7 @@
 			gameScreen = new GameScreen(gameState[0]);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
 			addChild(gameScreen);
 		}
 		
@@ -221,12 +224,33 @@
 			human.buildCard(e.getClickedCard());
 		}
 		
+		public function discardedCard(e:ClickEvent){
+			human.discardCard(e.getClickedCard());
+		}
+		
 		public function passTo(e:ClickEvent){
 			gameScreen.passOn(e);
 		}
 		
 		public function passInfo(e:InformationEvent){
 			gameScreen.passInfo(e);
+		}
+		
+		public function setState(s:String):void{
+			var newState:State = State.parseState(s);
+			gameState.unshift(newState);
+			gameScreen = new GameScreen(gameState[0]);
+			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
+			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
+			addChild(gameScreen);
+			
+			var playerStates:Array = new Array();
+			for(var i:Number = 0; i < players.length; i++){
+				players[i].setState(newState.getPlayerStates()[i]);
+				trace("player " + i + " has to parse " + newState.getPlayerStates()[i]);
+				//playerStates.push([players[i].getBoard(), players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
+			}
 		}
 		
 		

@@ -311,11 +311,11 @@
 			return playedCards;
 		}
 		
-		public function discardCard(e:GameEvent):void{
+		public function discardCard(c:Card):void{
 			coins += 3;
-			var clicked:Card = clickedCard;
+			var clicked:Card = c;
 			for(var i:Number=0; i<cards.length; i++){
-				if(cards[i]==clicked) {
+				if(cards[i]==c) {
 					cards.splice(i,1);
 				}
 			}
@@ -524,6 +524,15 @@
 		}
 		
 		
+		public function setState(a:Array):void{
+			//[, players[i].getCoins(), players[i].getMilitaryTokens()]
+			board = a[0];
+			cards = a[1];
+			playedCards = a[2];
+			wonderStagesBuilt = a[3];
+			coins = a[4];
+			militaryTokens = a[5];
+		}
 		
 		
 		

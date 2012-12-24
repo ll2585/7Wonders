@@ -84,7 +84,7 @@
 		}
 		
 		public function discardCard(e:ClickEvent):void{
-			trace("discarded");
+			dispatchEvent( new ClickEvent( ClickEvent.DISCARD, e.getClickedCard()  ) );
 		}
 		public function receiveInfoEvent(e:InformationEvent):void {
 			info = e.getInfo();

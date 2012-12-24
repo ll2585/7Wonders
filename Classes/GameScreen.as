@@ -27,6 +27,7 @@
 			temp.setCoins(s[4]);
 			temp.addEventListener(ClickEvent.ELEVATE, elevated);
 			temp.addEventListener(ClickEvent.BUILT, elevated);
+			temp.addEventListener(ClickEvent.DISCARD, elevated);
 			return temp;
 		}
 		
@@ -35,6 +36,8 @@
 				dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) ); 
 			} else if (e.getType() == "BUILT"){
 				dispatchEvent( new ClickEvent( ClickEvent.BUILT, e.getClickedCard()  ) ); 
+			} else if (e.getType() == "DISCARD"){
+				dispatchEvent( new ClickEvent( ClickEvent.DISCARD, e.getClickedCard()  ) ); 
 			}
 		}
 		
