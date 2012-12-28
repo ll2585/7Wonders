@@ -80,13 +80,15 @@
 			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
+			if(age==1){
 			setState("10;;1.14,18,7,11,4,6,0...6.[0.3,16,1,5,12,2,9...6.[2.13,8,17,10,19,15,20...6.");
-			/*gameScreen = new GameScreen(gameState[0]);
+			} else{
+			gameScreen = new GameScreen(gameState[0]);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
 			addChild(gameScreen);
-			*/
+			}
 		}
 		
 		private function roundEnd(e:GameEvent):void{
@@ -103,15 +105,6 @@
 				players[i].updateBoard();
 				players[i].traceScore();
 			}
-			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
-			trace("the current state is " + gameState[0]);
-			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
-			removeChild(gameScreen);
-			gameScreen = new GameScreen(gameState[0]);
-			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
-			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
-			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
-			addChild(gameScreen);
 		}
 		
 		private function endOfRound():void{
@@ -167,6 +160,15 @@
 			for(var i:int = 0; i < players.length; i++){
 				players[i].getFrom(0);
 			}
+			gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
+			trace("the current state is " + gameState[0]);
+			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
+			removeChild(gameScreen);
+			gameScreen = new GameScreen(gameState[0]);
+			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
+			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
+			addChild(gameScreen);
 		}
 		
 		private function makecards(age):void{

@@ -9,10 +9,7 @@
 		private var leftScreen:NeighborScreen;
 		private var rightScreen:NeighborScreen;
 		public function GameScreen(s:State) 
-		{
-			trace("water?");
-			trace("wat?" + s);
-			
+		{	
 			playerScreen = parsePlayerScreen(s.getPlayerStates()[1]);
 			playerScreen.x = 170;
 			addChild(playerScreen);

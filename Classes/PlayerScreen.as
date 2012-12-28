@@ -57,6 +57,8 @@
 				var military = new MilitaryToken(militaryArray[i]);
 				trace("added military");
 				addChild(military);
+				military.x = board.x+board.width;
+				military.y = board.y + i * military.getImage().height;
 			}
 
 		}
@@ -69,7 +71,6 @@
 		}
 
 		public function closeCardInfo(e:NavigationEvent):void {
-			trace("I closed");
 			removeChild(cardInfo);
 			cardInfo = null;
 		}

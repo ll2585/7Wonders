@@ -8,6 +8,7 @@
 	public class MilitaryToken extends MovieClip 
 	{
 		private var pts:Number;
+		private var image:Bitmap;
 		
 		
  		public function MilitaryToken(amt:Number) 
@@ -27,7 +28,12 @@
 			var classInstance:BitmapData;
   			classInstance = new ClassReference (0,0) as BitmapData;
 			var bitmap:Bitmap=new Bitmap(classInstance);
+			image = bitmap;
 			addChild(bitmap);
+		}
+		
+		public function getImage():Bitmap{
+			return image;
 		}
 		
 
