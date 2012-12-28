@@ -59,7 +59,7 @@
 				else{
 					trace("BUILT WONDER");
 					dispatchEvent( new GameEvent( GameEvent.BUILDWONDER ) );
-			dispatchEvent( new NavigationEvent( NavigationEvent.closeCardInfo ) );
+					dispatchEvent( new NavigationEvent( NavigationEvent.closeCardInfo ) );
 				}
 			}
 		}

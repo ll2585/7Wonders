@@ -25,6 +25,7 @@
 			temp.setHand(s[1]);
 			temp.setBuilt(s[2]);
 			temp.setCoins(s[4]);
+			temp.setMilitary(s[5]);
 			temp.addEventListener(ClickEvent.ELEVATE, elevated);
 			temp.addEventListener(ClickEvent.BUILT, elevated);
 			temp.addEventListener(ClickEvent.DISCARD, elevated);

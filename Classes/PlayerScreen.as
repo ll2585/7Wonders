@@ -9,6 +9,7 @@
 		private var coins:Number;
 		private var info:Array;
 		private var coinScreen:CoinImage;
+		private var militaryArray:Array;
 		
 		public function PlayerScreen() {
 			info = new Array();
@@ -49,6 +50,16 @@
 			coinScreen.x = board.x + 150;
 			coinScreen.y = board.y;
 		}
+		
+		public function setMilitary(s:Array):void {
+			militaryArray = s;
+			for(var i:Number = 0; i < militaryArray.length; i++){
+				var military = new MilitaryToken(militaryArray[i]);
+				trace("added military");
+				addChild(military);
+			}
+
+		}
 
 		public function cardClicked(e:ClickEvent):void {
 			for (var i:int = 0; i < cards.length; i++) {
@@ -58,10 +69,9 @@
 		}
 
 		public function closeCardInfo(e:NavigationEvent):void {
+			trace("I closed");
 			removeChild(cardInfo);
-			for (var i:int = 0; i < cards.length; i++) {
-				cards[i].addEventListener(ClickEvent.cardClicked, cardClicked);
-			}
+			cardInfo = null;
 		}
 
 		public function receiveEvent(e:ClickEvent):void {
@@ -84,7 +94,7 @@
 			addChild(cardInfo);
 		}
 		
-				public function enableListeners(e:GameEvent):void{
+		public function enableListeners(e:GameEvent):void{
 			for(var i:int = 0; i < cards.length; i++){
 				cards[i].addEventListener(ClickEvent.cardClicked, cardClicked);
 			}

@@ -93,8 +93,10 @@
 			round++;
 			playCards();
 			if(round==startcardcount-1){
+				trace("end of round");
 				endOfRound();
 			}else{
+				trace("new round");
 				passCards();
 			}
 			for(var i:int = 0; i < players.length; i++){
