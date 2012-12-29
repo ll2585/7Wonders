@@ -81,7 +81,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			if(age==1){
-			setState("10;;1.14,18,7,11,4,6,0...6.[0.3,16,1,5,12,2,9...6.[2.13,8,17,10,19,15,20...6.");
+			setState("13;;1.7,11,4,6.1,8,16..6.[0.1,5,12,9.2,0,20..6.[2.17,10,19,15.13,3,18..6.");
 			} else{
 			gameScreen = new GameScreen(gameState[0]);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);

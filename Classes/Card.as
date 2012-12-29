@@ -83,6 +83,9 @@
 			smallImage.x = xposition;
 			smallImage.y = yposition;
 		}
+		public function setSmallRotation(rot:Number):void{
+			smallImage.rotation = rot;
+		}
 		public function getNewBigImage():Bitmap{
 			var bigImage:String = cardName;
 			var ClassReference:Class = getDefinitionByName(bigImage) as Class;
