@@ -24,7 +24,7 @@
 			scoreArray = new Array(p1Array, p2Array, p3Array);
 			for(var i:int = 0; i < scoreArray.length; i++){
 				scoreArray[i][0].text = players[i].getBoardName();
-				//scoreArray[i][0].rotate = -90;
+				scoreArray[i][0].rotationZ = -90;
 				scoreArray[i][1].text = players[i].getMilitaryPoints();
 				scoreArray[i][2].text = players[i].getMoneyPoints();
 				scoreArray[i][3].text = players[i].getWonderPoints();
@@ -35,6 +35,12 @@
 				scoreArray[i][8].text = players[i].getTotalPoints();
 			}
 			
+			closeButton.addEventListener( MouseEvent.CLICK, closeWindow );
+			
+		}
+		
+		public function closeWindow( mouseEvent:MouseEvent ):void{
+			dispatchEvent( new NavigationEvent( NavigationEvent.closeScoringWindow ) );
 		}
 		
 	}

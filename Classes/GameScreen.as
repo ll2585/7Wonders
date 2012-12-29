@@ -1,6 +1,7 @@
 ﻿package
 {
 	import flash.display.MovieClip;
+	import flash.events.MouseEvent;
 
 	public class GameScreen extends MovieClip
 	{
@@ -8,18 +9,26 @@
 		private var playerScreen:PlayerScreen;
 		private var leftScreen:LeftNeighborScreen;
 		private var rightScreen:RightNeighborScreen;
-		public function GameScreen(s:State) 
+		private var scoringButton:ScoreButton;
+		private var players:Array;
+		private var scoringWindow:ScoringWindow;
+				
+		public function GameScreen(s:State, p:Array) 
 		{	
 			playerScreen = parsePlayerScreen(s.getPlayerStates()[1]);
 			playerScreen.x = 260;
-			
+			players = p;
 			leftScreen = parseLeftNeighborScreen(s.getPlayerStates()[0]);
 			addChild(leftScreen);
 			rightScreen = parseRightNeighborScreen(s.getPlayerStates()[2]);
 			addChild(rightScreen);
 			rightScreen.x = 960;
 			addChild(playerScreen);
-			trace("its first at " + rightScreen.x);
+			scoringButton = new ScoreButton();
+			scoringButton.x = 730;
+			scoringButton.y = 280;
+			scoringButton.addEventListener( MouseEvent.CLICK, scoreWindow );
+			addChild(scoringButton);
 		}
 		
 		public function parsePlayerScreen(s:Array):PlayerScreen{
@@ -77,6 +86,16 @@
 		
 		public function passOn(e:ClickEvent){
 			playerScreen.receiveEvent(e);
+		}
+		
+		public function scoreWindow( mouseEvent:MouseEvent ):void{
+			scoringWindow = new ScoringWindow(players);
+			addChild(scoringWindow);
+			scoringWindow.addEventListener(NavigationEvent.closeScoringWindow, closeWindow);
+		}
+		
+		public function closeWindow( e:NavigationEvent ):void{
+			removeChild(scoringWindow);
 		}
 		
 		public function passInfo(e:InformationEvent){

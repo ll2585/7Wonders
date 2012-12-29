@@ -10,10 +10,12 @@
 		private var info:Array;
 		private var coinScreen:CoinImage;
 		private var militaryArray:Array;
+
 		
 		public function PlayerScreen() {
 			info = new Array();
 			coinScreen = new CoinImage();
+			
 		}
 
 
@@ -22,6 +24,8 @@
 			b.y = 350;
 			addChild(b);
 		}
+		
+	
 
 		public function setHand(c:Array):void {
 			var firstX:Number = (board.width/2)-(c[0].width/2);

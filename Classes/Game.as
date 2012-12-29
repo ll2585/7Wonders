@@ -85,7 +85,7 @@
 			age = gameState[0].getAge();
 			round = gameState[0].getRound();
 			} else{
-			gameScreen = new GameScreen(gameState[0]);
+			gameScreen = new GameScreen(gameState[0], players);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
@@ -133,7 +133,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			removeChild(gameScreen);
-			gameScreen = new GameScreen(gameState[0]);
+			gameScreen = new GameScreen(gameState[0], players);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
@@ -176,7 +176,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			removeChild(gameScreen);
-			gameScreen = new GameScreen(gameState[0]);
+			gameScreen = new GameScreen(gameState[0], players);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
@@ -254,7 +254,7 @@
 		public function setState(s:String):void{
 			var newState:State = State.parseState(s);
 			gameState.unshift(newState);
-			gameScreen = new GameScreen(gameState[0]);
+			gameScreen = new GameScreen(gameState[0], players);
 			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
 			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
 			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
