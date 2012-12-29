@@ -48,62 +48,47 @@
 
 		public function setBuilt(cards:Array):void {
 			playedCards = cards;
-			var resourceCards:Number = 0;
-			var resourceYMove:Number = 23;
-			var resourceXMove:Number = Card.SMALLIMAGESIZE;
-			var resourceX:Number = board.x;
-			var resourceY:Number = board.y - resourceYMove;
-			var yellowX:Number = board.x;
-			var yellowY:Number = board.y - 330;
-			var redX:Number = yellowX + 137;
-			var redY:Number = yellowY;
-			var blueX:Number = redX + 137;
-			var blueY:Number = yellowY;
-			var greenX:Number = blueX + 137;
-			var greenY:Number = yellowY;
-			var purpleX:Number = greenX + 137;
-			var purpleY:Number = yellowY;
-			var cardXMove:Number = 15;
-			var cardYMove:Number = 28;
+			var cardXMove:Number = 30;
+			var brownX:Number = board.x+90;
+			var brownY:Number = board.y -86;
+			var greyX:Number = brownX;
+			var greyY:Number = brownY -86;
+			var yellowX:Number = brownX;
+			var yellowY:Number = greyY - 86;
+			var redX:Number = brownX;
+			var redY:Number = yellowY - 86;
+			var blueX:Number = brownX;
+			var blueY:Number = redY - 86;
+			var greenX:Number = brownX;
+			var greenY:Number = blueY - 86;
+			var purpleX:Number = brownX;
+			var purpleY:Number = greenY - 86;
 			for (var i:Number = 0; i < cards.length; i++) {
 				var c:Card = cards[i];
-				if (c.getColor()=="brown" || c.getColor()=="grey" || (c.getColor() == "yellow" && YellowCard(c).getCardType() == 3 )) {
-					c.setSmallRotation(90);
-					c.setSmallPosition(resourceX, resourceY);
-					resourceCards++;
-					if (resourceCards % 3 == 0) {
-						resourceX = board.x;
-						resourceY -=  resourceYMove;
-					} else {
-						resourceX +=  resourceXMove;
-					}
-					addChild(c.getSmallImage());
+				c.setSmallRotation(90);
+				if (c.getColor()=="brown") {
+					c.setSmallPosition(brownX, brownY);
+					brownX +=  cardXMove;
+				}else if (c.getColor()=="grey") {
+					c.setSmallPosition(greyX, greyY);
+					greyX +=  cardXMove;
 				} else if (c.getColor()=="yellow") {
 					c.setSmallPosition(yellowX, yellowY);
 					yellowX +=  cardXMove;
-					yellowY +=  cardYMove;
-					addChild(c.getSmallImage());
 				} else if (c.getColor()=="red") {
 					c.setSmallPosition(redX, redY);
 					redX +=  cardXMove;
-					redY +=  cardYMove;
-					addChild(c.getSmallImage());
 				} else if (c.getColor()=="blue") {
 					c.setSmallPosition(blueX, blueY);
 					blueX +=  cardXMove;
-					blueY +=  cardYMove;
-					addChild(c.getSmallImage());
 				} else if (c.getColor()=="green") {
 					c.setSmallPosition(greenX, greenY);
 					greenX +=  cardXMove;
-					greenY +=  cardYMove;
-					addChild(c.getSmallImage());
 				} else if (c.getColor()=="purple") {
 					c.setSmallPosition(purpleX, purpleY);
 					purpleX +=  cardXMove;
-					purpleY +=  cardYMove;
-					addChild(c.getSmallImage());
 				}
+				addChildAt(c.getSmallImage(),1);
 			}
 
 

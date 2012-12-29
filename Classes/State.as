@@ -22,6 +22,10 @@
 			return age;
 		}
 		
+		public function getRound():Number{
+			return round;
+		}
+		
 		public function getDiscardPile():Array{
 			return discardPile;
 		}

@@ -144,6 +144,7 @@
 						resourceX +=  resourceXMove;
 					}
 					addChildAt(c.getSmallImage(),0);
+					
 				} else if (c.getColor()=="yellow") {
 					c.setSmallPosition(yellowX, yellowY);
 					yellowX +=  cardXMove;
