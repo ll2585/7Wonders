@@ -29,6 +29,7 @@
 			if(s[1].length > 0){
 				temp.setHand(s[1]);
 			}
+			trace("s2 is " + s[2]);
 			temp.setBuilt(s[2]);
 			temp.setCoins(s[4]);
 			temp.setMilitary(s[5]);

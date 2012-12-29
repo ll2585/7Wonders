@@ -112,10 +112,10 @@
 			result += s[4] + ".";
 			for(var i:Number = 0; i < s[5].length; i++){
 				if(i != s[5].length -1){
-				result += s[5] + ",";
+				result += s[5][i] + ",";
 				}
 				else{
-					result += s[5];
+					result += s[5][i];
 				}
 			}
 			return result;
@@ -154,12 +154,10 @@
 				newPlayerState.push(Game.parseBoard(thisPlayerArray[0]));
 				var handParse:Array = thisPlayerArray[1].split(",");
 				var newHand:Array = new Array();
-				trace(" the card n is " + handParse[0]);
 				for(var j:Number = 0; j < handParse.length; j++){
 					newHand.push(Deck.parseCard(Number(handParse[j])));
 				}
 				newPlayerState.push(newHand);
-				trace(" my hand is " + newHand);
 				
 				var newBuilt:Array = new Array();
 
@@ -182,7 +180,6 @@
 				newPlayerState.push(Number(thisPlayerArray[4]));
 
 				var militaryTokens:Array = new Array();
-				
 				if(thisPlayerArray[5].indexOf(",") > 0){
 					militaryTokens = thisPlayerArray[5].split(",");
 				}

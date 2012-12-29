@@ -62,6 +62,7 @@
 		}
 		
 		public function getMilitaryTokens():Array{
+			trace(" my military tokens are " + militaryTokens);
 			return militaryTokens;
 		}
 		
@@ -546,9 +547,9 @@
 			*/
 		}
 		public function getMilitaryPoints():int{
-			var temp:int = 0;
-			for(var i:int = 0; i < militaryTokens.length; i++){
-				temp += militaryTokens[i];
+			var temp:Number = 0;
+			for(var i:Number = 0; i < militaryTokens.length; i++){
+				temp += Number(militaryTokens[i]);
 			}
 			return temp;
 		}

@@ -37,7 +37,6 @@
 			militaryArray = s;
 			for(var i:Number = 0; i < militaryArray.length; i++){
 				var military = new MilitaryToken(militaryArray[i]);
-				trace("added military");
 				addChild(military);
 				military.x = i * (military.getImage().width);
 				military.y = board.y -board.height-military.getImage().height;

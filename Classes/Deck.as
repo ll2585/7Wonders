@@ -26,9 +26,7 @@
 			for(var i:Number = 0; i < age2Deck.length; i++){
 				allCards.push(age2Deck[i]);
 			}
-			for(var i:Number = 0; i < age3Deck.length; i++){
-				allCards.push(age3Deck[i]);
-			}
+			
 		}
 		
 		public function makeCards():void{
@@ -109,7 +107,13 @@
 			guildDeck.push(new PurpleCard(67, "buildersguild", 0,[Game.brownResources[1],Game.brownResources[1],Game.brownResources[2],Game.brownResources[2],Game.greyResources[1]], 0, "1_none_3"));
 			
 			guildDeck = DocumentClass.shuffle(guildDeck);
-			for(var i:int = 0; i < numPlayers+2; i++){
+			for(var i:Number = 0; i < guildDeck.length; i++){
+				allCards.push(guildDeck[i]);
+			}
+			for(var i:Number = 0; i < age3Deck.length; i++){
+				allCards.push(age3Deck[i]);
+			}
+			for(var i:Number = 0; i < numPlayers+2; i++){
 				age3Deck.push(guildDeck[i]);
 			}
 		}

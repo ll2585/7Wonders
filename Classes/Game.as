@@ -81,7 +81,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			if(age==1){
-			setState("13;;1.7,11,4,6.14,8,16..6.[0.1,5,12,9.2,0,17..5.[2.10,19,15,20.13,3,18..6.");
+			setState("33;15,9,20,6,39,24,41;1.51,50,52,46.14,8,16,7,19,12,36,35,22,28,21,25,47,56,55..6.-1,1,3,3[0.49,48,57,58.2,0,17,5,4,27,34,33,26,37,38,44,45,42..15.-1,-1,-1[2.66,64,62,53.13,3,18,10,1,11,31,23,40,30,32,29,43,54,63..6.1,1,-1");
 			age = gameState[0].getAge();
 			round = gameState[0].getRound();
 			} else{
@@ -222,7 +222,6 @@
 		private function getPlayerStates():Array{
 			var playerStates:Array = new Array();
 			for(var i:Number = 0; i < players.length; i++){
-				trace(players[i].getCards());
 				playerStates.push([players[i].getBoard(), players[i].getCards(), players[i].getPlayedCards(), players[i].getWonderStagesBuilt(), players[i].getCoins(), players[i].getMilitaryTokens()]);
 			}
 			return playerStates;

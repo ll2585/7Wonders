@@ -24,6 +24,7 @@
 			scoreArray = new Array(p1Array, p2Array, p3Array);
 			for(var i:int = 0; i < scoreArray.length; i++){
 				scoreArray[i][0].text = players[i].getBoardName();
+				//scoreArray[i][0].rotate = -90;
 				scoreArray[i][1].text = players[i].getMilitaryPoints();
 				scoreArray[i][2].text = players[i].getMoneyPoints();
 				scoreArray[i][3].text = players[i].getWonderPoints();
