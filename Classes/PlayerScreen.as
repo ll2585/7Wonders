@@ -57,8 +57,8 @@
 				var military = new MilitaryToken(militaryArray[i]);
 				trace("added military");
 				addChild(military);
-				military.x = board.x+board.width;
-				military.y = board.y + i * military.getImage().height;
+				military.x = board.x+ i * (military.getImage().width);
+				military.y = board.y + board.height ;
 			}
 
 		}
@@ -77,7 +77,7 @@
 
 		public function receiveEvent(e:ClickEvent):void {
 			cardInfo = new CardInfoScreen(e.getClickedCard());
-			cardInfo.x = 400;
+			cardInfo.x = 20;
 			cardInfo.y = 200;
 
 			cardInfo.addEventListener( ClickEvent.DISCARD, discardCard );

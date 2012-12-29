@@ -19,7 +19,7 @@
 		public function setBoard(b:Board):void {
 			board = b;
 			b.rotation = -90;
-			b.x = -60;
+			b.x = -61;
 			b.y = 750;
 			addChild(b);
 		}
@@ -39,8 +39,8 @@
 				var military = new MilitaryToken(militaryArray[i]);
 				trace("added military");
 				addChild(military);
-				military.x = board.x+board.width;
-				military.y = board.y + i * military.getImage().height;
+				military.x = i * (military.getImage().width);
+				military.y = board.y -board.height-military.getImage().height;
 			}
 
 		}

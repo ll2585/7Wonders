@@ -81,7 +81,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			if(age==1){
-			setState("10;;1.14,18,7,11,4,6,0...6.[0.3,16,1,5,12,2,9...6.[2.13,8,17,10,19,15,20...6.");
+			setState("13;;1.7,11,4,6.14,8,16..6.[0.1,5,12,9.2,0,17..5.[2.10,19,15,20.13,3,18..6.");
 			age = gameState[0].getAge();
 			round = gameState[0].getRound();
 			} else{
@@ -129,8 +129,18 @@
 			newRound();
 			}else{
 				trace("GAME OVER");
+				gameState.unshift(new State(age, round, discardPile, getPlayerStates()));
+			trace("the current state is " + gameState[0]);
+			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
+			removeChild(gameScreen);
+			gameScreen = new GameScreen(gameState[0]);
+			gameScreen.addEventListener(ClickEvent.ELEVATE, elevated);
+			gameScreen.addEventListener(ClickEvent.BUILT, builtCard);
+			gameScreen.addEventListener(ClickEvent.DISCARD, discardedCard);
+			addChild(gameScreen);
 				var endScreen:ScoringWindow = new ScoringWindow(players);
 				addChild(endScreen);
+				
 			}
 		}
 		
