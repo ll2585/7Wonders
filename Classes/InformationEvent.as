@@ -7,7 +7,8 @@
 	{
 		
 
-		public static const wat:String = "wat";
+		public static const WONDER:String = "wonder";
+		public static const CARD:String = "card";
 		private var myString:String;
 		private var info:Array;
 		

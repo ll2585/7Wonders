@@ -81,7 +81,7 @@
 			trace("the current state is " + gameState[0]);
 			trace(" it is also defined as (into parser) :" + gameState[0].toParser());
 			if(age==1){
-			setState("33;15,9,20,6,39,24,41;1.51,50,52,46.14,8,16,7,19,12,36,35,22,28,21,25,47,56,55..6.-1,1,3,3[0.49,48,57,58.2,0,17,5,4,27,34,33,26,37,38,44,45,42..15.-1,-1,-1[2.66,64,62,53.13,3,18,10,1,11,31,23,40,30,32,29,43,54,63..6.1,1,-1");
+			setState("11;;2.12,8,3,13,5,4.10..6.[0.15,16,20,19,7,0.1..6.[1.11,17,9,6,18,14.2..6.");
 			age = gameState[0].getAge();
 			round = gameState[0].getRound();
 			} else{
@@ -231,7 +231,11 @@
 			human.addEventListener(ClickEvent.FREEBUILD, passTo);
 			human.addEventListener(ClickEvent.PAYBUILD, passTo);
 			human.addEventListener(ClickEvent.CANNOTBUILD, passTo);
-			human.addEventListener(InformationEvent.wat, passInfo);
+			human.addEventListener(ClickEvent.FREEWONDER, passTo);
+			human.addEventListener(ClickEvent.PAYWONDER, passTo);
+			human.addEventListener(InformationEvent.CARD, passInfo);
+			human.addEventListener(InformationEvent.WONDER, passInfo);
+			human.addEventListener(ClickEvent.NEXTSTAGE, passTo);
 			human.cardClicked(e);
 		}
 		

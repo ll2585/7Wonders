@@ -160,8 +160,9 @@
 				newPlayerState.push(newHand);
 				
 				var newBuilt:Array = new Array();
-
-				if(thisPlayerArray[2].indexOf(",") > 0){
+				trace("my built cards are " + thisPlayerArray[2]);
+				if(thisPlayerArray[2].length > 0){
+					//if(thisPlayerArray[2].indexOf(",") > 0){
 					var builtParse:Array = thisPlayerArray[2].split(",");
 					for(var j:Number = 0; j < builtParse.length; j++){
 						newBuilt.push(Deck.parseCard(Number(builtParse[j])));

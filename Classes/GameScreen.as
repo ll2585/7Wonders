@@ -14,7 +14,11 @@
 		private var scoringWindow:ScoringWindow;
 				
 		public function GameScreen(s:State, p:Array) 
-		{	
+		{	scoringButton = new ScoreButton();
+			scoringButton.x = 730;
+			scoringButton.y = 280;
+			scoringButton.addEventListener( MouseEvent.CLICK, scoreWindow );
+			addChild(scoringButton);
 			playerScreen = parsePlayerScreen(s.getPlayerStates()[1]);
 			playerScreen.x = 260;
 			players = p;
@@ -24,11 +28,7 @@
 			addChild(rightScreen);
 			rightScreen.x = 960;
 			addChild(playerScreen);
-			scoringButton = new ScoreButton();
-			scoringButton.x = 730;
-			scoringButton.y = 280;
-			scoringButton.addEventListener( MouseEvent.CLICK, scoreWindow );
-			addChild(scoringButton);
+			
 		}
 		
 		public function parsePlayerScreen(s:Array):PlayerScreen{
@@ -90,12 +90,14 @@
 		
 		public function scoreWindow( mouseEvent:MouseEvent ):void{
 			scoringWindow = new ScoringWindow(players);
+			playerScreen.removeListeners();
 			addChild(scoringWindow);
 			scoringWindow.addEventListener(NavigationEvent.closeScoringWindow, closeWindow);
 		}
 		
 		public function closeWindow( e:NavigationEvent ):void{
 			removeChild(scoringWindow);
+			playerScreen.enableListeners( new GameEvent(GameEvent.OOPS));
 		}
 		
 		public function passInfo(e:InformationEvent){

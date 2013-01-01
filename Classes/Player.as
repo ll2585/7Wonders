@@ -204,7 +204,7 @@
 					dispatchEvent( new ClickEvent( ClickEvent.FREEBUILD, e.getClickedCard() ) );
 				}
 				else{
-					dispatchEvent( new InformationEvent( InformationEvent.wat, new Array(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment) ) );
+					dispatchEvent( new InformationEvent( InformationEvent.CARD, new Array(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment) ) );
 		
 					trace("can build this if i pay");
 					dispatchEvent( new ClickEvent( ClickEvent.PAYBUILD, e.getClickedCard() ) );
@@ -215,14 +215,17 @@
 			if(board.getNextStage()!=null){
 				var wonderStage:Card = board.getNextStage();
 				if(canBuildCard(wonderStage)){
-					
+					dispatchEvent( new ClickEvent( ClickEvent.NEXTSTAGE, board.getNextStage() ) );
 					//cardInfo.setWonderStage(board.getNextStage());
 				if(freeBuild(wonderStage)){
 					trace("I CAN BUILD WONDER STAGE FOR FREE");
+					dispatchEvent( new ClickEvent( ClickEvent.FREEWONDER, e.getClickedCard() ) );
 					//cardInfo.enableWonderBuild();
 				}
 				else{
 					trace("I CANNOT BUILD WONDER STAGE FOR FREE");
+					dispatchEvent( new InformationEvent( InformationEvent.WONDER, new Array(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment) ) );
+					dispatchEvent( new ClickEvent( ClickEvent.PAYWONDER, e.getClickedCard() ) );
 					//cardInfo.enablePayWonderBuild(getResources(), coins,leftNeighbor.getTradableResources(), leftNeighborPayment, rightNeighbor.getTradableResources(), rightNeighborPayment);
 				}
 				//cardInfo.addEventListener( GameEvent.BUILDWONDER, buildWonder );

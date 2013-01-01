@@ -21,6 +21,8 @@
 		private var rightResourceScreen:BuyResourcesScreen;
 		private var totalCost:int;
 		private var wonderStage:WonderStage;
+		private var leftCoinCost:Number;
+		private var rightCoinCost:Number;
 		
 		public function CardInfoScreen(c:Card)
 		{
@@ -52,6 +54,7 @@
 		}
 		public function build( c:Card ):Function{
 			return function(e:MouseEvent){
+				trace("the card is " + card);
 				if(c.getColor() != "none"){
 			dispatchEvent( new ClickEvent( ClickEvent.BUILT, card ) );
 			dispatchEvent( new NavigationEvent( NavigationEvent.closeCardInfo ) );
@@ -130,6 +133,7 @@
 		}
 		public function refreshBoards(clickedCard:Card):Function{
 			return function (e:GameEvent):void{
+				
 				var c:Card = clickedCard;
 			var cardCosts:Array = [0,0,0,0];
 			var greycardCosts:Array = [0,0,0];
@@ -194,6 +198,8 @@
 		}
 		
 		public function checkforBuild(c:Card):void{
+			leftCoinCost = 0;
+				rightCoinCost = 0;
 			var cardToBuy:Card = c;
 			var buyFromLeft:Array = leftResourceScreen.getResources();
 			var buyFromRight:Array = rightResourceScreen.getResources();
@@ -222,6 +228,7 @@
 						if(buyFromLeft[j].indexOf(cardToBuy.getCost()[i])>-1 && buyFromLeftCheck[j]!=1){
 							buyFromLeftCheck[j] = 1;
 							coinCost+=getPayment(leftPayment, cardToBuy.getCost()[i]);
+							leftCoinCost += getPayment(leftPayment, cardToBuy.getCost()[i]);
 							built = true;
 							break;
 						}
@@ -230,6 +237,7 @@
 						if(greybuyFromLeft[j].indexOf(cardToBuy.getCost()[i])>-1 && greybuyFromLeftCheck[j]!=1){
 							greybuyFromLeftCheck[j] = 1;
 							coinCost+=getPayment(leftPayment, cardToBuy.getCost()[i]);
+							leftCoinCost += getPayment(leftPayment, cardToBuy.getCost()[i]);
 							built = true;
 							break;
 						}
@@ -240,6 +248,7 @@
 						if(buyFromRight[j].indexOf(cardToBuy.getCost()[i])>-1 && buyFromRightCheck[j]!=1){
 							buyFromRightCheck[j] = 1;
 							coinCost+=getPayment(rightPayment, cardToBuy.getCost()[i]);
+							rightCoinCost += getPayment(rightPayment, cardToBuy.getCost()[i]);
 							built = true;
 							break;
 						}
@@ -248,6 +257,7 @@
 						if(greybuyFromRight[j].indexOf(cardToBuy.getCost()[i])>-1 && greybuyFromRightCheck[j]!=1){
 							greybuyFromRightCheck[j] = 1;
 							coinCost+=getPayment(rightPayment, cardToBuy.getCost()[i]);
+							rightCoinCost += getPayment(rightPayment, cardToBuy.getCost()[i]);
 							built = true;
 							break;
 						}
@@ -278,6 +288,8 @@
 			}
 			totalCost = coinCost;
 			costAmt.text = coinCost.toString();
+			trace("gonna pay left " + leftCoinCost);
+			trace("gonna pay right " + rightCoinCost);
 			if(canBuy){
 				leftResourceScreen.doneBuying();
 				rightResourceScreen.doneBuying();

@@ -68,10 +68,23 @@
 		}
 
 		public function cardClicked(e:ClickEvent):void {
+			removeListeners();
+			cardInfo = new CardInfoScreen(e.getClickedCard());
+			cardInfo.x = 20;
+			cardInfo.y = 200;
+
+			cardInfo.addEventListener( ClickEvent.DISCARD, discardCard );
+			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
+			cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
+			addChild(cardInfo);
+			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) );
+			
+		}
+		
+		public function removeListeners():void {
 			for (var i:int = 0; i < cards.length; i++) {
 				cards[i].removeEventListener(ClickEvent.cardClicked, cardClicked);
 			}
-			dispatchEvent( new ClickEvent( ClickEvent.ELEVATE, e.getClickedCard()  ) );
 		}
 
 		public function closeCardInfo(e:NavigationEvent):void {
@@ -80,23 +93,21 @@
 		}
 
 		public function receiveEvent(e:ClickEvent):void {
-			cardInfo = new CardInfoScreen(e.getClickedCard());
-			cardInfo.x = 20;
-			cardInfo.y = 200;
-
-			cardInfo.addEventListener( ClickEvent.DISCARD, discardCard );
-			cardInfo.addEventListener( NavigationEvent.closeCardInfo, closeCardInfo );
-			cardInfo.addEventListener( GameEvent.OOPS, enableListeners );
 			if (e.getType() == "FREEBUILD") {
 				cardInfo.enableBuild();
-
 			} else if (e.getType() == "PAYBUILD") {
 				cardInfo.enablePayBuild(info[0], info[1],info[2], info[3], info[4], info[5]);
 			} else if (e.getType() == "CANNOTBUILD"){
 				
+			} else if (e.getType() == "FREEWONDER"){
+				cardInfo.enableWonderBuild();
+			} else if (e.getType() == "PAYWONDER"){
+				cardInfo.enablePayWonderBuild(info[0], info[1],info[2], info[3], info[4], info[5]);
+			} else if (e.getType() == "NEXTSTAGE"){
+				cardInfo.setWonderStage(e.getClickedCard() as WonderStage);
 			}
 			cardInfo.addEventListener( ClickEvent.BUILT, buildCard );
-			addChild(cardInfo);
+			
 		}
 		
 		public function enableListeners(e:GameEvent):void{

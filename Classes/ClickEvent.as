@@ -13,6 +13,10 @@
 		public static const BUILT:String = "BUILT";
 		public static const CANNOTBUILD:String = "CANNOTBUILD";
 		public static const DISCARD:String = "DISCARD";
+		public static const FREEWONDER:String = "FREEWONDER";
+		public static const PAYWONDER:String = "PAYWONDER";
+		public static const NEXTSTAGE:String = "NEXTSTAGE";
+		
 		private var myString:String;
 		private var card:Card;
 		
